@@ -1,0 +1,22 @@
+{
+  "name": "express-es6-template-engine-cli",
+  "version": "0.0.1",
+  "description": "CLI around express-es6-template-engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsdevtools/express-es6-template-engine-cli.git"
+  },
+  "author": "jsdevtools",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jsdevtools/express-es6-template-engine-cli/issues"
+  },
+  "homepage": "https://github.com/jsdevtools/express-es6-template-engine-cli#readme",
+  "dependencies": {
+    "express-es6-template-engine": "^2.1.9"
+  }
+}
