@@ -1,22 +1,40 @@
 {
-  "name": "express-es6-template-engine-cli",
+  "name": "es6-template-renderer-cli",
   "version": "0.0.1",
-  "description": "CLI around express-es6-template-engine",
+  "description": "es6-template-renderer CLI",
   "main": "index.js",
+  "preferGlobal": true,
+  "bin": {
+    "etr-cli": "bin/etr-cli"
+  },
   "scripts": {
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jsdevtools/express-es6-template-engine-cli.git"
+    "url": "git+https://github.com/jsdevtools/es6-template-renderer-cli.git"
   },
   "author": "jsdevtools",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jsdevtools/express-es6-template-engine-cli/issues"
+    "url": "https://github.com/jsdevtools/es6-template-renderer-cli/issues"
   },
-  "homepage": "https://github.com/jsdevtools/express-es6-template-engine-cli#readme",
+  "homepage": "https://github.com/jsdevtools/es6-template-renderer-cli#readme",
   "dependencies": {
-    "express-es6-template-engine": "^2.1.9"
+    "globby": "^10.0.1",
+    "minimist": "^1.2.0",
+    "mkdirp": "^0.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-prettier": "^6.2.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "__tests__/ex"
+    ]
   }
 }
