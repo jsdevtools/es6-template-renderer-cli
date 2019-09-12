@@ -1,0 +1,8 @@
+module.exports = (locals) =>`
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>${locals.title}</h1>
+</body>
+</html>
+`;

@@ -1,0 +1,3 @@
+module.exports = (maintainedBy) => (`
+ES6 Renderer is ${maintainedBy ? `a template engine maintained by ${maintainedBy}` : 'not maintained anymore'}.
+`);

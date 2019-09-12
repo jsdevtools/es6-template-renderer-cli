@@ -1,0 +1,11 @@
+const partialconditional = require('./conditional_partial.partial');
+
+module.exports = (locals) => `
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>${locals.title}</h1>
+    <main>${partialconditional(locals.maintainedBy)}</main>
+</body>
+</html>
+`;

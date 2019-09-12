@@ -1,0 +1,10 @@
+const partial3 = require('./recursive.partial');
+
+module.exports = (locals) => `
+<!DOCTYPE html>
+<html>
+<body>
+  ${partial3(locals)}
+</body>
+</html>
+`;

@@ -1,0 +1,3 @@
+module.exports = () => `
+<p>The fastest javascript template string engine!</p>
+`;

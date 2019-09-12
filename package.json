@@ -8,7 +8,7 @@
     "etr-cli": "bin/etr-cli"
   },
   "scripts": {
-    "test": "jest"
+    "test": "mocha --reporter spec __tests__/render-test"
   },
   "repository": {
     "type": "git",
@@ -26,15 +26,11 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.2.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "jest": "^24.9.0",
+    "mocha": "^6.2.0",
     "prettier": "^1.18.2"
-  },
-  "jest": {
-    "testPathIgnorePatterns": [
-      "__tests__/ex"
-    ]
   }
 }

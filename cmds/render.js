@@ -1,34 +1,42 @@
-module.exports = async args => {
-  const error = require('../utils/error');
-  const path = require('path');
-  const glob = require('globby');
-  const util = require('util');
-  const mkdirp = require('mkdirp');
+const error = require('../utils/error');
+const path = require('path');
+const globby = require('globby');
+const mkdirp = require('mkdirp');
+const util = require('util');
 
+module.exports = options => {
   const writeFile = util.promisify(require('fs').writeFile);
-  const templates = (val => (Array.isArray(val) ? val : [val]))(args.templates || args.t || '*.etr');
-  const data = (val => (val ? require(path.resolve(process.cwd(), val)) : {}))(args.locals || args.l);
-  const baseDir = args.base || args.b || './';
-  const outDir = args.out || args.o || baseDir;
-  const extension = args.extension || args.e || '.html';
 
-  const templatePaths = await glob(templates.map(template => path.join(baseDir, template)));
+  const templates = options.templates.map(template => path.posix.join(options.baseDir, template));
+
+  const templatePaths = globby.sync(templates);
 
   const outPaths = templatePaths.map(templatePath => {
-    const parts = path.parse(path.resolve(outDir, path.relative(baseDir, templatePath)));
-    return path.resolve(parts.dir, parts.name + extension);
+    const parts = path.parse(
+      path.resolve(options.outDir || options.baseDir, path.relative(options.baseDir, templatePath)),
+    );
+    return path.resolve(parts.dir, parts.name + options.extension);
   });
 
   if (!templatePaths) {
-    error(`No files matching "${templates}"`, true);
+    error(`No files matching "${options.templates}"`, true);
   }
 
   const results = templatePaths.map(templatePath => {
-    return require(path.resolve(baseDir, templatePath))(data);
+    return require(path.resolve(templatePath))(
+      (val => (val ? require(path.resolve(process.cwd(), val)) : {}))(options.data),
+    );
   });
 
-  outPaths.map((outPath, index) => {
-    mkdirp(path.dirname(outPath));
-    writeFile(outPath, results[index], 'utf-8');
+  const retVal = outPaths.map((outPath, index) => {
+    if (options.outDir) {
+      mkdirp(path.dirname(outPath));
+      writeFile(outPath, results[index], 'utf-8');
+      return null;
+    } else {
+      return results[index];
+    }
   });
+
+  return retVal.join('');
 };

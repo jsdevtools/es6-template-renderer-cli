@@ -1,0 +1,10 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>ES6 Renderer</h1>
+    <main>
+ES6 Renderer is a template engine maintained by Good Samaritans.
+</main>
+</body>
+</html>

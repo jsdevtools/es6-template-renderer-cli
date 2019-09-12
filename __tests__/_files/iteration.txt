@@ -1,0 +1,10 @@
+
+<dl>
+  
+    <dt>Multi-line strings</dt>
+    <dd>Any new line characters inserted in the source are part of the template string.</dd>
+  
+    <dt>Expression interpolation</dt>
+    <dd>Template strings can contain placeholders. These are indicated by dollar sign and curly braces.</dd>
+  
+</dl>

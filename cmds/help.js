@@ -13,8 +13,8 @@ const menus = {
     defaults:
       [-t *.etr]
       [-b <process.cwd()>]
-      [-o <--base>]
       [-e .html]
+      -o undefined evaluates to stdout by default
       -l undefined evaluates to { locals: {} } by default
       
     flags:
