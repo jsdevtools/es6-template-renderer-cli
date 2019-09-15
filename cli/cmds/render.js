@@ -3,7 +3,7 @@ const path = require('path');
 const globby = require('globby');
 const mkdirp = require('mkdirp');
 const util = require('util');
-const etr = require('../../');
+const etr = require('../../')();
 
 module.exports = options => {
   const writeFile = util.promisify(require('fs').writeFile);
