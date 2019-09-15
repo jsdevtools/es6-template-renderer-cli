@@ -1,4 +1,4 @@
 var chai = require('chai');
 assert = chai.assert;
 chai.should();
-etr = require('../cmds/render.js');
+etr = require('../cli/cmds/render.js');

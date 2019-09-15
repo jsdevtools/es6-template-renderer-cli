@@ -3,6 +3,7 @@ const path = require('path');
 const globby = require('globby');
 const mkdirp = require('mkdirp');
 const util = require('util');
+const etr = require('../../');
 
 module.exports = options => {
   const writeFile = util.promisify(require('fs').writeFile);
@@ -23,9 +24,19 @@ module.exports = options => {
   }
 
   const results = templatePaths.map(templatePath => {
-    return require(path.resolve(templatePath))(
+    let retVal;
+    etr(
+      path.resolve(templatePath),
       (val => (val ? require(path.resolve(process.cwd(), val)) : {}))(options.data),
+      (err, content) => {
+        if (err) {
+          throw err;
+        } else {
+          retVal = content;
+        }
+      },
     );
+    return retVal;
   });
 
   const retVal = outPaths.map((outPath, index) => {
